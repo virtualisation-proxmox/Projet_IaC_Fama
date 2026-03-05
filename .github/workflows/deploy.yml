@@ -1,13 +1,14 @@
 name: "Déploiement Automatique IaC"
 on:
   push:
-    branches: [ master ] 
+    branches: [ master ]
 
 jobs:
   terraform-ansible:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3 
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
@@ -22,7 +23,7 @@ jobs:
           PM_API_TOKEN_ID: ${{ secrets.PROXMOX_API_TOKEN_ID }}
           PM_API_TOKEN_SECRET: ${{ secrets.PROXMOX_API_TOKEN_SECRET }}
 
-- name: Run Ansible Playbook
+      - name: Run Ansible Playbook
         run: |
           cd ansible
           ansible-playbook -i inventory.ini playbook.yml
