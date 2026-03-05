@@ -1,0 +1,39 @@
+---
+- name: Configuration Niveau 1
+  hosts: all
+  become: yes
+  tasks:
+    - name: Creer utilisateur deploy
+      ansible.builtin.user:
+        name: deploy
+        state: present
+
+- name: Setup Web
+  hosts: web
+  become: yes
+  tasks:
+    - name: Install Nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: yes
+    - name: Start Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes
+
+- name: Setup DB
+  hosts: db
+  become: yes
+  tasks:
+    - name: Install MariaDB
+      ansible.builtin.apt:
+        name: mariadb-server
+        state: present
+        update_cache: yes
+    - name: Start MariaDB
+      ansible.builtin.service:
+        name: mariadb
+        state: started
+        enabled: yes
