@@ -1,0 +1,12 @@
+---
+- name: Installer MariaDB
+  apt:
+    name: mariadb-server
+    state: present
+    update_cache: no
+
+- name: Démarrer le service MariaDB
+  service:
+    name: mariadb
+    state: started
+    enabled: yes

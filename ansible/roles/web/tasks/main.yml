@@ -1,0 +1,14 @@
+---
+- name: Installer Nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+
+- name: Créer la page web avec l'IP de la DB
+  copy:
+    dest: /var/www/html/index.html
+    content: |
+      <h1>Serveur Web de Fama</h1>
+      <p>Niveau 2 : Engineer valide !</p>
+      <p>Ma base de donnees est sur l'IP : {{ hostvars['db-srv']['ansible_host'] }}</p>
