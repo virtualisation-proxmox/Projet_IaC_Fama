@@ -3,8 +3,6 @@ Projet Infrastructure as Code (IaC) : Déploiement Automatisé Web & DB
 Ce projet démontre la mise en place d'une infrastructure automatisée sur un serveur Proxmox
 en utilisant Terraform pour le provisionnement et Ansible pour la configuration logicielle
 
-Niveau 1 : Provisionnement
-
 Terraform :
 Communique avec l'API de Proxmox pour réserver les ressources matérielles.
 Création de 2 VMs Linux (vm-webfama et vm-dbfama) sur le nœud Proxmox
@@ -17,5 +15,6 @@ Ansible:
 Configuration : Installation automatisée de Nginx sur la VM Web et de MariaDB sur la VM DB.
 Gestion des services : Activation et démarrage des services pour garantir qu'ils soient opérationnels immédiatement.
 Utilisateur : Gestion des accès via l'utilisateur système ubuntu et injection de clés SSH
+
 
 
